@@ -1,3 +1,4 @@
+#include <lcd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,7 +9,6 @@
 #include "Display.h"
 #include "Model.h"
 #include "Switches.h"
-#include "Lcd.h"
 
 #define SETTING_DISPLAY_IN_SEC (SEC_TO_TICK(20))
 

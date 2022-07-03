@@ -18,6 +18,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <lcd.h>
 #include "main.h"
 #include "fatfs.h"
 #include "usb_device.h"
@@ -30,7 +31,6 @@
 #include "interp.h"
 #include "Display.h"
 #include "Buzzer.h"
-#include "Lcd.h"
 #include "Model.h"
 #include "Switches.h"
 #include "eeprom.h"

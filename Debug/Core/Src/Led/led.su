@@ -1,0 +1,2 @@
+../Core/Src/Led/led.c:55:6:LED_Set	32	static
+../Core/Src/Led/led.c:146:6:LED_Run	16	static
