@@ -1,0 +1,4 @@
+Buzzer.c:50:6:BUZZER_Request	16	static
+Buzzer.c:93:6:BUZZER_Run	8	static
+Buzzer.c:229:6:BUZZER_Init	4	static
+Buzzer.c:235:6:BUZZER_EnableSound	16	static

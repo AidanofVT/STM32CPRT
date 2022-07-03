@@ -1,0 +1,14 @@
+Lcd.c:48:6:GetClearScreenWait	4	static
+Lcd.c:53:6:SetClearScreenWait	16	static
+Lcd.c:67:6:IsTxLcdQueueEmpty	16	static
+Lcd.c:102:6:IsTxLcdQueueFull	16	static
+Lcd.c:132:6:ReadTxLcdQueueAndTransmit	16	static
+Lcd.c:204:6:WriteTxLcdQueue	24	static
+Lcd.c:256:13:LCD_ClearScreen	16	static
+Lcd.c:262:13:LCD_BlinkCursorOnOff	24	static
+Lcd.c:269:6:LCD_MoveCursor	24	static
+Lcd.c:285:13:LCD_SetBacklight	16	static
+Lcd.c:291:9:LCD_Write	24	static
+Lcd.c:306:6:LCD_Init	56	static
+Lcd.c:328:6:LCD_Power_Onoff	16	static
+Lcd.c:340:6:LCD_Power_Reset	8	static

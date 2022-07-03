@@ -1,0 +1,13 @@
+utilities.c:38:6:InitUartTxQueue	8	static
+utilities.c:54:6:IsTxUartQueueEmpty	16	static
+utilities.c:89:6:IsTxUartQueueFull	16	static
+utilities.c:119:6:ReadTxUartQueueAndTransmit	16	static
+utilities.c:160:6:WriteTxUartQueue	32	static
+utilities.c:208:6:UartPrintf	16	static
+utilities.c:257:6:UartPrintfWithoutPrompt	16	static
+utilities.c:297:6:GuiUartPrintf	16	static
+utilities.c:343:6:PmUartPrintf	16	static
+utilities.c:387:6:PmUartPrintfWithoutPrompt	16	static
+utilities.c:425:10:GetTimeMs	4	static
+utilities.c:431:10:DiffTimeFromStartTimeMs	40	static
+utilities.c:446:10:Get_SysTick	8	static

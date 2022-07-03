@@ -1,0 +1,13 @@
+Switches.c:119:13:MAX7370_write	32	static
+Switches.c:131:13:isMembraneIntStillLow	16	static
+Switches.c:138:13:MAX7370_read	24	static
+Switches.c:161:13:MAX7370_init	16	static
+Switches.c:210:9:Switches_Init	8	static
+Switches.c:221:11:KeyCodeTranslation	24	static
+Switches.c:236:6:Switches_Scan	24	static
+Switches.c:345:6:Switches_Get_Status	24	static
+Switches.c:353:6:Switches_Power_Onoff	16	static
+Switches.c:365:6:LED_Start_On	16	static
+Switches.c:374:6:LED_Start_Off	16	static
+Switches.c:383:6:LED_Pause_On	16	static
+Switches.c:392:6:LED_Pause_Off	16	static

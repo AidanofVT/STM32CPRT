@@ -1,0 +1,17 @@
+Display.c:35:6:SetSystemState	16	static
+Display.c:41:6:Display_Init	8	static
+Display.c:67:14:GetSystemState	4	static
+Display.c:72:6:Display_Manager	24	static
+Display.c:168:13:Display_Standby_Page	56	static
+Display.c:187:13:Display_Mute_Page	16	static
+Display.c:196:13:Display_Start_Page	16	static
+Display.c:205:13:Display_Menu_Page	16	static
+Display.c:214:13:Display_Pause_Page	16	static
+Display.c:223:13:Display_Left_Page	16	static
+Display.c:232:13:Display_Up_Page	16	static
+Display.c:241:13:Display_Down_Page	16	static
+Display.c:250:13:Display_Sel_Page	16	static
+Display.c:259:13:Display_Right_Page	16	static
+Display.c:284:13:Display_Page	16	static
+Display.c:292:6:Display_Update_TimeLastSwitchPress	16	static
+Display.c:297:6:Display_Request_Refresh	4	static
