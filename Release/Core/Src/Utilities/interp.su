@@ -1,0 +1,4 @@
+../Core/Src/Utilities/interp.c:63:5:IsAlpha	0	static
+../Core/Src/Utilities/interp.c:222:8:InterpRun	48	static
+../Core/Src/Utilities/interp.c:295:8:InterpRegister	32	static
+../Core/Src/Utilities/interp.c:320:6:InterpInit	0	static

@@ -1,0 +1,4 @@
+../Core/Src/Buzzer/Buzzer.c:50:6:BUZZER_Request	12	static
+../Core/Src/Buzzer/Buzzer.c:93:6:BUZZER_Run	0	static
+../Core/Src/Buzzer/Buzzer.c:229:6:BUZZER_Init	0	static
+../Core/Src/Buzzer/Buzzer.c:235:6:BUZZER_EnableSound	0	static

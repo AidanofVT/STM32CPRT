@@ -1,0 +1,11 @@
+../Core/Src/Switches/Switches.c:138:13:MAX7370_read	24	static
+../Core/Src/Switches/Switches.c:119:13:MAX7370_write.constprop	16	static
+../Core/Src/Switches/Switches.c:210:9:Switches_Init	24	static
+../Core/Src/Switches/Switches.c:221:11:KeyCodeTranslation	0	static
+../Core/Src/Switches/Switches.c:236:6:Switches_Scan	32	static
+../Core/Src/Switches/Switches.c:345:6:Switches_Get_Status	0	static
+../Core/Src/Switches/Switches.c:353:6:Switches_Power_Onoff	0	static
+../Core/Src/Switches/Switches.c:365:6:LED_Start_On	16	static
+../Core/Src/Switches/Switches.c:374:6:LED_Start_Off	16	static
+../Core/Src/Switches/Switches.c:383:6:LED_Pause_On	16	static
+../Core/Src/Switches/Switches.c:392:6:LED_Pause_Off	16	static

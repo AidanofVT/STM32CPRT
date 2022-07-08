@@ -83,21 +83,25 @@ void valve_control(uint8_t valvename, bool status)
 void Valve_1A_On()
 {
 	HAL_GPIO_WritePin(GPIOG, VALVE_1A_CTRL_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
 }
 
 void Valve_1A_Off()
 {
 	HAL_GPIO_WritePin(GPIOG, VALVE_1A_CTRL_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
 }
 
 void Valve_1B_On()
 {
 	HAL_GPIO_WritePin(GPIOG, VALVE_1B_CTRL_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
 }
 
 void Valve_1B_Off()
 {
 	HAL_GPIO_WritePin(GPIOG, VALVE_1B_CTRL_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
 }
 
 void Valve_2A_On()

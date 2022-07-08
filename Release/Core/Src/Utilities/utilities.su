@@ -1,0 +1,13 @@
+../Core/Src/Utilities/utilities.c:38:6:InitUartTxQueue	0	static
+../Core/Src/Utilities/utilities.c:54:6:IsTxUartQueueEmpty	0	static
+../Core/Src/Utilities/utilities.c:89:6:IsTxUartQueueFull	0	static
+../Core/Src/Utilities/utilities.c:119:6:ReadTxUartQueueAndTransmit	16	static
+../Core/Src/Utilities/utilities.c:297:6:GuiUartPrintf	16	static
+../Core/Src/Utilities/utilities.c:425:10:GetTimeMs	0	static
+../Core/Src/Utilities/utilities.c:431:10:DiffTimeFromStartTimeMs	0	static
+../Core/Src/Utilities/utilities.c:160:6:WriteTxUartQueue	24	static
+../Core/Src/Utilities/utilities.c:208:6:UartPrintf	24	static
+../Core/Src/Utilities/utilities.c:257:6:UartPrintfWithoutPrompt	24	static
+../Core/Src/Utilities/utilities.c:343:6:PmUartPrintf	24	static
+../Core/Src/Utilities/utilities.c:387:6:PmUartPrintfWithoutPrompt	16	static
+../Core/Src/Utilities/utilities.c:446:10:Get_SysTick	0	static

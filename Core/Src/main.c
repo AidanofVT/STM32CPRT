@@ -18,7 +18,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <lcd.h>
 #include "main.h"
 #include "fatfs.h"
 #include "usb_device.h"
@@ -77,8 +76,10 @@ SPI_HandleTypeDef hspi3;
 
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim5;
+TIM_HandleTypeDef htim6;
 TIM_HandleTypeDef htim7;
 TIM_HandleTypeDef htim14;
+DMA_HandleTypeDef hdma_tim6_up;
 
 UART_HandleTypeDef huart5;
 UART_HandleTypeDef huart7;
@@ -87,6 +88,19 @@ UART_HandleTypeDef huart8;
 /* USER CODE BEGIN PV */
 FATFS SDFatFs;  /* File system object for SD card logical drive */
 FIL MyFile;     /* File object */
+
+//AIDAN CODE STARTS HERE
+float period = 1.0;
+float abDutyCycle = 0.1;
+float thDutyCycle = 0.1;
+float abOffset = 0.1;
+uint32_t tickNow;
+uint32_t previousThOnTick;
+uint32_t nextThOnTick;
+uint32_t nextThOffTick;
+uint32_t nextAbOnTick;
+uint32_t nextAbOffTick;
+//AIDAN CODE ENDS HERE
 
 // **** Must also add new corresponding swVersionId in main.h ****
 const char * swVersionStrings[] = {
@@ -121,7 +135,6 @@ static bool oneSecondTick                         = false;
 static uint32_t oneMinuteHalfMillisecondCnt       = 0;
 static uint16_t oneSecondHalfMillisecondCnt       = 0;
 static uint16_t clearScreenHalfMillisecondCnt     = 0;
-
 static uint16_t eepromWaitHalfMillisecondCnt      = 0;
 
 bool bPfcLoadEnable                        = false;   //static
@@ -154,6 +167,7 @@ static void MX_RTC_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC3_Init(void);
 static void MX_UART8_Init(void);
+static void MX_TIM6_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -485,6 +499,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -524,6 +539,7 @@ int main(void)
   MX_ADC1_Init();
   MX_ADC3_Init();
   MX_UART8_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
 
   wdi_flag = true;  //Enables feeding EWDT
@@ -683,6 +699,26 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+//AIDAN CODE BEGINS HERE
+	  tickNow = HAL_GetTick();
+	  if (tickNow >= nextThOnTick) {
+		  Valve_1A_On();
+		  previousThOnTick = nextThOnTick;
+		  nextThOnTick = tickNow + period * 1000;
+	  }
+	  if (tickNow >= nextThOffTick) {
+		  Valve_1A_Off();
+		  nextThOffTick = previousThOnTick + (period + period * thDutyCycle) * 1000;
+	  }
+	  if (tickNow >= nextAbOnTick) {
+		  Valve_1B_On();
+		  nextAbOnTick = previousThOnTick + (period * (1 + abOffset)) * 1000;
+	  }
+	  if (tickNow >= nextAbOffTick) {
+		  Valve_1B_Off();
+		  nextAbOffTick = previousThOnTick + (period * (1 + abOffset) + period * thDutyCycle) * 1000;
+	  }
+//AIDAN CODE ENDS HERE
 	  if( fiveMsTick == true ) // 5 ms processing
 	  {
 	      fiveMsTick = false;
@@ -1462,6 +1498,44 @@ static void MX_TIM5_Init(void)
 }
 
 /**
+  * @brief TIM6 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM6_Init(void)
+{
+
+  /* USER CODE BEGIN TIM6_Init 0 */
+
+  /* USER CODE END TIM6_Init 0 */
+
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM6_Init 1 */
+
+  /* USER CODE END TIM6_Init 1 */
+  htim6.Instance = TIM6;
+  htim6.Init.Prescaler = 54000;
+  htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim6.Init.Period = 65535;
+  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM6_Init 2 */
+
+  /* USER CODE END TIM6_Init 2 */
+
+}
+
+/**
   * @brief TIM7 Initialization Function
   * @param None
   * @retval None
@@ -1658,8 +1732,12 @@ static void MX_DMA_Init(void)
 
   /* DMA controller clock enable */
   __HAL_RCC_DMA2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
+  /* DMA1_Stream1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
   /* DMA2_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 2, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);

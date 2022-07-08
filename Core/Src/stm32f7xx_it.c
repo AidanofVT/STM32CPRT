@@ -74,6 +74,7 @@ extern I2C_HandleTypeDef hi2c3;
 extern DMA_HandleTypeDef hdma_sdmmc2_tx;
 extern DMA_HandleTypeDef hdma_sdmmc2_rx;
 extern SD_HandleTypeDef hsd2;
+extern DMA_HandleTypeDef hdma_tim6_up;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim7;
 extern UART_HandleTypeDef huart5;
@@ -232,6 +233,20 @@ void EXTI2_IRQHandler(void)
   /* USER CODE BEGIN EXTI2_IRQn 1 */
 
   /* USER CODE END EXTI2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA1 stream1 global interrupt.
+  */
+void DMA1_Stream1_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Stream1_IRQn 0 */
+
+  /* USER CODE END DMA1_Stream1_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_tim6_up);
+  /* USER CODE BEGIN DMA1_Stream1_IRQn 1 */
+
+  /* USER CODE END DMA1_Stream1_IRQn 1 */
 }
 
 /**
